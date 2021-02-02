@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB630BCC2573E61D00EEE1F8 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB630BCB2573E61D00EEE1F8 /* NewsTableViewCell.swift */; };
+		CB630BCF2573F16000EEE1F8 /* NewsBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB630BCE2573F16000EEE1F8 /* NewsBrowserVC.swift */; };
 		CBD207872572533200412535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD207862572533200412535 /* AppDelegate.swift */; };
 		CBD207892572533200412535 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD207882572533200412535 /* SceneDelegate.swift */; };
-		CBD2078B2572533200412535 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2078A2572533200412535 /* ViewController.swift */; };
+		CBD2078B2572533200412535 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2078A2572533200412535 /* NewsVC.swift */; };
 		CBD2078E2572533200412535 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD2078C2572533200412535 /* Main.storyboard */; };
 		CBD207902572533700412535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBD2078F2572533700412535 /* Assets.xcassets */; };
 		CBD207932572533700412535 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD207912572533700412535 /* LaunchScreen.storyboard */; };
+		CBD2079C2572538E00412535 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2079B2572538E00412535 /* Post.swift */; };
+		CBD207A52572956700412535 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD207A42572956700412535 /* Source.swift */; };
+		CBD207A82572991B00412535 /* SourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD207A72572991B00412535 /* SourcesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CBD207832572533200412535 /* Lab_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB630BCB2573E61D00EEE1F8 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		CB630BCE2573F16000EEE1F8 /* NewsBrowserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBrowserVC.swift; sourceTree = "<group>"; };
+		CBD207832572533200412535 /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD207862572533200412535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBD207882572533200412535 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBD2078A2572533200412535 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBD2078A2572533200412535 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
 		CBD2078D2572533200412535 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBD2078F2572533700412535 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBD207922572533700412535 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBD207942572533700412535 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBD2079B2572538E00412535 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		CBD207A42572956700412535 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		CBD207A72572991B00412535 /* SourcesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +50,7 @@
 		CBD2077A2572533200412535 = {
 			isa = PBXGroup;
 			children = (
-				CBD207852572533200412535 /* Lab_2 */,
+				CBD207852572533200412535 /* RSSReader */,
 				CBD207842572533200412535 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +58,36 @@
 		CBD207842572533200412535 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CBD207832572533200412535 /* Lab_2.app */,
+				CBD207832572533200412535 /* RSSReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CBD207852572533200412535 /* Lab_2 */ = {
+		CBD207852572533200412535 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
 				CBD207862572533200412535 /* AppDelegate.swift */,
 				CBD207882572533200412535 /* SceneDelegate.swift */,
-				CBD2078A2572533200412535 /* ViewController.swift */,
+				CBD2078A2572533200412535 /* NewsVC.swift */,
 				CBD2078C2572533200412535 /* Main.storyboard */,
 				CBD2078F2572533700412535 /* Assets.xcassets */,
 				CBD207912572533700412535 /* LaunchScreen.storyboard */,
 				CBD207942572533700412535 /* Info.plist */,
+				CBD2079B2572538E00412535 /* Post.swift */,
+				CBD207A42572956700412535 /* Source.swift */,
+				CBD207A72572991B00412535 /* SourcesVC.swift */,
+				CB630BCB2573E61D00EEE1F8 /* NewsTableViewCell.swift */,
+				CB630BCE2573F16000EEE1F8 /* NewsBrowserVC.swift */,
 			);
-			path = Lab_2;
+			path = RSSReader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CBD207822572533200412535 /* Lab_2 */ = {
+		CBD207822572533200412535 /* RSSReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBD207972572533700412535 /* Build configuration list for PBXNativeTarget "Lab_2" */;
+			buildConfigurationList = CBD207972572533700412535 /* Build configuration list for PBXNativeTarget "RSSReader" */;
 			buildPhases = (
 				CBD2077F2572533200412535 /* Sources */,
 				CBD207802572533200412535 /* Frameworks */,
@@ -82,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = Lab_2;
+			name = RSSReader;
 			productName = Lab_2;
-			productReference = CBD207832572533200412535 /* Lab_2.app */;
+			productReference = CBD207832572533200412535 /* RSSReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CBD2077E2572533200412535 /* Build configuration list for PBXProject "Lab_2" */;
+			buildConfigurationList = CBD2077E2572533200412535 /* Build configuration list for PBXProject "RSSReader" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -114,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CBD207822572533200412535 /* Lab_2 */,
+				CBD207822572533200412535 /* RSSReader */,
 			);
 		};
 /* End PBXProject section */
@@ -137,9 +152,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBD2078B2572533200412535 /* ViewController.swift in Sources */,
+				CB630BCF2573F16000EEE1F8 /* NewsBrowserVC.swift in Sources */,
+				CBD207A52572956700412535 /* Source.swift in Sources */,
+				CBD2078B2572533200412535 /* NewsVC.swift in Sources */,
+				CB630BCC2573E61D00EEE1F8 /* NewsTableViewCell.swift in Sources */,
 				CBD207872572533200412535 /* AppDelegate.swift in Sources */,
 				CBD207892572533200412535 /* SceneDelegate.swift in Sources */,
+				CBD207A82572991B00412535 /* SourcesVC.swift in Sources */,
+				CBD2079C2572538E00412535 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,12 +308,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NWU3UR5FK7;
-				INFOPLIST_FILE = Lab_2/Info.plist;
+				INFOPLIST_FILE = RSSReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "yakubets-v.Lab-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "yakubets-v.RSSReader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -307,12 +327,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NWU3UR5FK7;
-				INFOPLIST_FILE = Lab_2/Info.plist;
+				INFOPLIST_FILE = RSSReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "yakubets-v.Lab-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "yakubets-v.RSSReader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -322,7 +342,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CBD2077E2572533200412535 /* Build configuration list for PBXProject "Lab_2" */ = {
+		CBD2077E2572533200412535 /* Build configuration list for PBXProject "RSSReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CBD207952572533700412535 /* Debug */,
@@ -331,7 +351,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CBD207972572533700412535 /* Build configuration list for PBXNativeTarget "Lab_2" */ = {
+		CBD207972572533700412535 /* Build configuration list for PBXNativeTarget "RSSReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CBD207982572533700412535 /* Debug */,
