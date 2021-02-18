@@ -25,7 +25,6 @@ class NewsVC: UIViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Привет"
-        
         newsCount = 5
     }
     
@@ -179,11 +178,6 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
                 destinationVC.dismiss(animated: true, completion: nil)
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 130
     }
 }
 
