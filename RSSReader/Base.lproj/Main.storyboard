@@ -11,7 +11,7 @@
         <!--NewsVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewsVC" customModule="Lab_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewsVC" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="764"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="135" id="uJ2-kV-FqL" customClass="NewsTableViewCell" customModule="Lab_2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" rowHeight="135" id="uJ2-kV-FqL" customClass="NewsTableViewCell" customModule="RSSReader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uJ2-kV-FqL" id="DTV-Ha-ifg">
@@ -78,9 +78,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Новости" id="UNA-aY-luv">
-                                        <barButtonItem key="rightBarButtonItem" title="Изменить" id="uFt-eH-PEm">
+                                        <barButtonItem key="rightBarButtonItem" title="Изменить" id="zoq-38-PGw">
+                                            <color key="tintColor" systemColor="systemGreenColor"/>
                                             <connections>
-                                                <action selector="changeSorcesList:" destination="BYZ-38-t0r" id="b9k-lu-3iz"/>
+                                                <action selector="changeSourcesList:" destination="BYZ-38-t0r" id="TuH-UW-1Iu"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -110,7 +111,7 @@
         <!--News BrowserVC-->
         <scene sceneID="w5r-b5-a8b">
             <objects>
-                <viewController storyboardIdentifier="newsBrowserVC" id="BC9-7t-c3d" customClass="NewsBrowserVC" customModule="Lab_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newsBrowserVC" id="BC9-7t-c3d" customClass="NewsBrowserVC" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A4I-aV-ckV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,10 +126,11 @@
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6T-8q-3H3">
                                 <rect key="frame" x="46" y="810" width="368" height="52"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="RSl-fE-LJX"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Вернуться к списку новостей">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
@@ -139,6 +141,7 @@
                                     <constraint firstAttribute="height" constant="52" id="2sU-kU-fw1"/>
                                     <constraint firstAttribute="width" constant="46" id="zYy-TL-mI9"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" image="square.and.arrow.up" catalog="system"/>
                             </button>
                         </subviews>
@@ -170,7 +173,7 @@
         <!--SourcesVC-->
         <scene sceneID="6Ac-yP-HbG">
             <objects>
-                <viewController storyboardIdentifier="sourcesVC" id="Ran-a7-jym" customClass="SourcesVC" customModule="Lab_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sourcesVC" id="Ran-a7-jym" customClass="SourcesVC" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Emu-js-hAh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,14 +242,14 @@
     </scenes>
     <resources>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

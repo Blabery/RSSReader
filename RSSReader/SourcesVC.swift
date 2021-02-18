@@ -11,9 +11,8 @@ class SourcesVC: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var countLabel: UITextField!
     
-    public var completion: (([Source], Int) -> Void)?
+    public var completion: (([Source]) -> Void)?
     
     var selectedSourcesCount: Int = 0
     
@@ -40,37 +39,22 @@ class SourcesVC: UIViewController {
     }
     
     @IBAction func complete() {
-        guard let text = countLabel.text else {
-            return
-        }
-        
-        guard let count = Int(text) else {
-            return
-        }
-        
-        if count < 1 {
-            let alert = UIAlertController(title: "", message: "Установлено дефолтное количество новостей в 5", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
         
         if let selectedCount = table.indexPathsForSelectedRows {
-            
             for indexPath in selectedCount {
-                
                 selectedSourcesList.append(sourcesList[indexPath.row])
             }
-            completion?(selectedSourcesList, count)
+            completion?(selectedSourcesList)
             
             self.dismiss(animated: true, completion: nil)
-        } else {
-            
+        }
+        else {
+
             let alert = UIAlertController(title: "", message: "Выберите хотя бы один источник", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ок", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         }
-        
     }
 }
 

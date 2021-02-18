@@ -20,21 +20,40 @@ class NewsVC: UIViewController, XMLParserDelegate {
     var tempPost: Post? = nil
     var tempElement: String?
     var url: String?
+    var parser: XMLParser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Привет"
+        newsCount = 5
     }
     
-    func parseDataFrom(fromURL url: String) {
-        
-        let url = URL(string: url)
-        let parser = XMLParser(contentsOf: url!)
-        parser?.delegate = self
-        parser?.parse()
-        
+    override func viewDidAppear(_ animated: Bool) {
         table.reloadData()
+        if sources.count == 0 {
+            if let sourcesVC = storyboard?.instantiateViewController(identifier: "sourcesVC") as? SourcesVC {
+                sourcesVC.modalPresentationStyle = .fullScreen
+                self.present(sourcesVC, animated: true, completion: nil)
+                
+                sourcesVC.completion = { [self] selectedSources in
+                    sources = selectedSources
+                    parseDataFromSourcesList(list: sources)
+                    table.reloadData()
+                }
+            }
+        }
+    }
+    
+    func parseDataFromSourcesList(list: [Source]) {
+        
+        for source in list {
+            guard let url = URL(string: source.sourceRssLink) else { print("Error to create link!")
+                return
+            }
+            parser = XMLParser(contentsOf: url)
+            parser.delegate = self
+            parser.parse()
+        }
     }
     
     private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {
@@ -93,68 +112,31 @@ class NewsVC: UIViewController, XMLParserDelegate {
         if let post = tempPost {
             
             if elementName == "item" {
-                
-                
                 posts.append(post)
-                
                 tempPost = nil
-                
             }
         }
     }
     
-    @IBAction func changeSorcesList(_ sender: Any) {
-        
-        
-        
-        let sourcesVC = storyboard?.instantiateViewController(identifier: "sourcesVC") as? SourcesVC
-        self.present(sourcesVC!, animated: true, completion: nil)
-        
-        sourcesVC!.completion = { [self] selectedSources, index in
-            
-            newsCount = index
-            sources = selectedSources
+    @IBAction func changeSourcesList(_ sender: Any)
+    {
+        if let sourcesVC = storyboard?.instantiateViewController(identifier: "sourcesVC") as? SourcesVC {
+            sourcesVC.modalPresentationStyle = .fullScreen
+            self.present(sourcesVC, animated: true, completion: nil)
             posts = []
-            for source in sources {
-                
-                parseDataFrom(fromURL: source.sourceRssLink)
-            }
-        }
-    }
-}
-
-
-
-
-extension NewsVC {
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if sources.count == 0 {
             
-            if let sourcesVC = storyboard?.instantiateViewController(identifier: "sourcesVC") as? SourcesVC {
-                sourcesVC.modalPresentationStyle = .fullScreen
-                self.present(sourcesVC, animated: true, completion: nil)
-                
-                sourcesVC.completion = { [self] selectedSources, index in
-                    newsCount = index
-                    sources = selectedSources
-                    
-                }
-                
-            }
-        } else {
-            
-            for source in sources {
-                
-                parseDataFrom(fromURL: source.sourceRssLink)
+            sourcesVC.completion = { [self] selectedSources in
+                sources = selectedSources
+                parseDataFromSourcesList(list: sources)
+                table.reloadData()
+                print("Количество, после изменения источников: \(sources.count)")
             }
         }
         
     }
 }
 
-//TABLE METHODS
+//MARK: -Table Methods
 extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -182,8 +164,6 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
             }
             task.resume()
         }
-        
-        
         return cell!
     }
     
@@ -191,7 +171,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
         if let destinationVC = storyboard?.instantiateViewController(identifier: "newsBrowserVC") as? NewsBrowserVC {
             
             destinationVC.urlString = posts[indexPath.row].link
-            destinationVC.modalPresentationStyle = .fullScreen
+//            destinationVC.modalPresentationStyle = .overCurrentContext
             present(destinationVC, animated: true, completion: nil)
             
             destinationVC.completion = { () in
@@ -201,7 +181,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135.0
     }
 }
