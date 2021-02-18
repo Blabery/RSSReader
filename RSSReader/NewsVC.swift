@@ -25,11 +25,11 @@ class NewsVC: UIViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Привет"
+        
         newsCount = 5
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        table.reloadData()
         if sources.count == 0 {
             if let sourcesVC = storyboard?.instantiateViewController(identifier: "sourcesVC") as? SourcesVC {
                 sourcesVC.modalPresentationStyle = .fullScreen
@@ -47,7 +47,7 @@ class NewsVC: UIViewController, XMLParserDelegate {
     func parseDataFromSourcesList(list: [Source]) {
         
         for source in list {
-            guard let url = URL(string: source.sourceRssLink) else { print("Error to create link!")
+            guard let url = URL(string: source.sourceRssLink) else {
                 return
             }
             parser = XMLParser(contentsOf: url)
@@ -56,10 +56,10 @@ class NewsVC: UIViewController, XMLParserDelegate {
         }
     }
     
-    private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {
-        
-            print("parse error: \(parseError)")
-    }
+//    private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {
+//
+//            print("parse error: \(parseError)")
+//    }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
@@ -182,7 +182,8 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135.0
+        
+        return 130
     }
 }
 
