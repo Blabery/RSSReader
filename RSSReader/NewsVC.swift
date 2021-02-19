@@ -55,11 +55,6 @@ class NewsVC: UIViewController, XMLParserDelegate {
         }
     }
     
-//    private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {
-//
-//            print("parse error: \(parseError)")
-//    }
-    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         tempElement = elementName
@@ -108,9 +103,25 @@ class NewsVC: UIViewController, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        if let post = tempPost {
+        if var post = tempPost {
             
             if elementName == "item" {
+                
+                print(post.date)
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+                //dateFormatterGet.locale = Locale(identifier: "ru_MD")
+                let str = post.date.trimmingCharacters(in: .whitespacesAndNewlines
+                )
+                
+                guard let date = dateFormatterGet.date(from: str) else { return }
+                
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "dd.MM.yy"
+                let printDate = dateFormatterPrint.string(from: date)
+                print(printDate)
+                //print(dateFormatterPrint.string(from: date!))
+                post.date = printDate
                 posts.append(post)
                 tempPost = nil
             }
@@ -148,6 +159,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
         cell?.titleLabel.text = posts[indexPath.row].title
         cell?.pudDateLabel.text = posts[indexPath.row].date
         cell?.newsImage.image = UIImage(systemName: "house")
+        cell?.newsImage.layer.cornerRadius = 45
         
         if posts[indexPath.row].imageURL != "" {
             
@@ -168,13 +180,13 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationVC = storyboard?.instantiateViewController(identifier: "newsBrowserVC") as? NewsBrowserVC {
-            
+
             destinationVC.urlString = posts[indexPath.row].link
 //            destinationVC.modalPresentationStyle = .overCurrentContext
             present(destinationVC, animated: true, completion: nil)
-            
+
             destinationVC.completion = { () in
-                
+
                 destinationVC.dismiss(animated: true, completion: nil)
             }
         }
